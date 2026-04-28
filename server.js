@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
+// Default port is 8080
 const port = process.env.PORT || 8080;
 
 app.use(express.json());
