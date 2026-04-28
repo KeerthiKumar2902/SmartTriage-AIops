@@ -36,10 +36,4 @@ jobs:
         run: docker push asia-south1-docker.pkg.dev/smarttriage-aiops/smart-triage-repo/smarttriage:latest
 
       - name: Deploy to Cloud Run
-        run: |
-          gcloud run deploy smarttriage-aiops \
-            --image asia-south1-docker.pkg.dev/smarttriage-aiops/smart-triage-repo/smarttriage:latest \
-            --region asia-south1 \
-            --port 8080 \
-            --set-env-vars DATABASE_URL=${{ secrets.DATABASE_URL }},GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }},DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }} \
-            --allow-unauthenticated
+        run: gcloud run deploy smarttriage-aiops --image asia-south1-docker.pkg.dev/smarttriage-aiops/smart-triage-repo/smarttriage:latest --region asia-south1 --port 8080 --set-env-vars DATABASE_URL=${{ secrets.DATABASE_URL }},GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }},DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }} --allow-unauthenticated
